@@ -2,11 +2,11 @@ name: Build and publish
 
 on:
   push:
-    branches: [master]
+    branches: [main]
   workflow_dispatch:
   schedule:
     # weekly refresh of ratings and artwork
-    - cron: '17 4 * * 1'
+    - cron: '42 0 * * 1'
 
 permissions:
   contents: write
