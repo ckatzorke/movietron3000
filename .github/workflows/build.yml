@@ -1,0 +1,47 @@
+name: Build and publish
+
+on:
+  push:
+    branches: [master]
+  workflow_dispatch:
+  schedule:
+    # weekly refresh of ratings and artwork
+    - cron: '17 4 * * 1'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Restore TMDB cache
+        uses: actions/cache@v4
+        with:
+          path: .cache
+          key: tmdb-${{ github.run_id }}
+          restore-keys: tmdb-
+
+      - name: Build site
+        run: node scripts/build.mjs
+        env:
+          TMDB_API_KEY: ${{ secrets.TMDB_API_KEY }}
+
+      - name: Publish to gh-pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist
+          publish_branch: gh-pages
+          force_orphan: true
+          commit_message: 'Publish ${{ github.sha }}'

@@ -1,0 +1,14 @@
+{
+  "name": "movietron3000",
+  "private": true,
+  "description": "Static site for my digital movie purchases, enriched with TMDB data",
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "resolve": "node scripts/resolve.mjs",
+    "serve": "node scripts/serve.mjs"
+  }
+}

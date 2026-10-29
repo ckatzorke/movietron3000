@@ -1,0 +1,12 @@
+{
+  "title": "MovieTron 3000",
+  "csv": "data/movies-digital.csv",
+  "language": "de-DE",
+  "fallbackLanguage": "en-US",
+  "region": "DE",
+  "platforms": {
+    "Apple": { "label": "Apple TV", "icon": "apple.svg", "color": "#3a8fc8" },
+    "Amazon Prime": { "label": "Amazon", "icon": "amazon.svg", "color": "#c27d1c" }
+  },
+  "fallbackPlatformColor": "#7d8b93"
+}
