@@ -1,12 +1,15 @@
 # MovieTron 3000
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/b30859c8-824b-4141-b090-fd24683c3270/deploy-status)](https://app.netlify.com/projects/movietron3000/deploys)
+
 A static website for my digital movie purchases (Apple, Amazon). The purchase list lives in
 [`data/movies-digital.csv`](data/movies-digital.csv). A GitHub workflow looks up every title on
-[TMDB](https://www.themoviedb.org/), builds the site and publishes it to the `gh-pages` branch.
+[TMDB](https://www.themoviedb.org/), builds the site and publishes it to the `gh-pages` branch.  
+Additionally, the site is published to Netflify, and is available at [https://movietron3000.katzorke.io](https://movietron3000.katzorke.io).
 
 ## Adding a purchase
 
-Add a line to the CSV and push to `master`:
+Add a line to the CSV and push to `main`:
 
 ```csv
 Title;Purchase Date;Platform;TMDB ID;Quality
@@ -81,7 +84,7 @@ scripts/resolve.mjs          review and pin TMDB matches
 ## GitHub setup
 
 1. Add the repository secret **`TMDB_API_KEY`** (Settings → Secrets and variables → Actions).
-2. Push to `master`. The first run creates the `gh-pages` branch.
+2. Push to `main`. The first run creates the `gh-pages` branch.
 3. Settings → Pages → Source: *Deploy from a branch*, branch `gh-pages`, folder `/ (root)`.
 
 The workflow runs on every push to `master`, weekly to refresh ratings, and manually via *Run workflow*.
